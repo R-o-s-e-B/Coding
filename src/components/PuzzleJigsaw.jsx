@@ -3,24 +3,23 @@ import { JigsawPuzzle } from "react-jigsaw-puzzle/lib";
 import "react-jigsaw-puzzle/lib/jigsaw-puzzle.css";
 import img from "../assets/chitti pics.jpeg";
 import Quiz from "./Quiz";
+import LevelThree from "./LevelThree.jsx";
 
 function PuzzleJigsaw() {
-    const [passed, setPassed] = useState(false);
+    const [level, setLevel] = useState(1);
 
-    const set = () => {
-        setPassed(true);
+    const handleLevelUp = () => {
+        setLevel(level + 1);
     };
 
     return (
         <>
-            {passed ? (
-                <Quiz />
-            ) : (
+            {level === 1 && (
                 <JigsawPuzzle
                     imageSrc={img}
                     rows={2}
                     columns={2}
-                    onSolved={set}
+                    onSolved={handleLevelUp}
                     className="jigsaw-puzzle"
                     style={{
                         border: '2px solid black',
@@ -29,6 +28,8 @@ function PuzzleJigsaw() {
                     }}
                 />
             )}
+            {level === 2 && <Quiz onLevelUp={handleLevelUp} />}
+            {level === 3 && <LevelThree />}
         </>
     );
 }

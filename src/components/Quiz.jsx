@@ -1,8 +1,11 @@
 import { useState } from "react";
+import PropTypes from 'prop-types';
 
-function Quiz() {
+function Quiz({ onLevelUp }) {
     const [selectedOption, setSelectedOption] = useState(null);
     const [isCorrect, setIsCorrect] = useState(false);
+    const [clickedOptions, setClickedOptions] = useState([]);
+    const [enteredText, setEnteredText] = useState("");
 
     const options = ["Air", "Water", "Food", "Shelter"];
     const correctOption = "Haarvish";
@@ -10,6 +13,28 @@ function Quiz() {
     const handleOptionClick = (option) => {
         setSelectedOption(option);
         setIsCorrect(option === correctOption);
+
+        if (!clickedOptions.includes(option)) {
+            const newClickedOptions = [...clickedOptions, option];
+            setClickedOptions(newClickedOptions);
+            console.log("Clicked options:", newClickedOptions);
+
+            if (newClickedOptions.length === options.length || option === correctOption) {
+                setIsCorrect(option === correctOption);
+            }
+        }
+    };
+
+    const handleTextChange = (event) => {
+        setEnteredText(event.target.value);
+    };
+
+    const handleTextSubmit = () => {
+        if (enteredText.toLowerCase() === correctOption.toLowerCase()) {
+            onLevelUp();
+        } else {
+            alert("Incorrect! Please try again.");
+        }
     };
 
     return (
@@ -30,14 +55,26 @@ function Quiz() {
                     </li>
                 ))}
             </ul>
-            {selectedOption && (
-                <p style={styles.message}>
-                    {isCorrect ? "Correct!" : "Incorrect, Right Option is Haarvish."}
-                </p>
+            {clickedOptions.length === options.length && (
+                <div style={styles.textBoxContainer}>
+                    <p style={styles.message}>The correct answer is Haarvish.</p>
+                    <input
+                        type="text"
+                        value={enteredText}
+                        onChange={handleTextChange}
+                        style={styles.input}
+                        placeholder="Enter the correct answer"
+                    />
+                    <button onClick={handleTextSubmit} style={styles.button}>Submit</button>
+                </div>
             )}
         </div>
     );
 }
+
+Quiz.propTypes = {
+    onLevelUp: PropTypes.func.isRequired,
+};
 
 const styles = {
     container: {
@@ -69,6 +106,26 @@ const styles = {
         fontSize: '18px',
         color: '#333',
         marginTop: '20px'
+    },
+    textBoxContainer: {
+        marginTop: '20px',
+        textAlign: 'center'
+    },
+    input: {
+        padding: '10px',
+        fontSize: '16px',
+        borderRadius: '5px',
+        border: '1px solid #ccc',
+        marginRight: '10px'
+    },
+    button: {
+        padding: '10px 20px',
+        fontSize: '16px',
+        borderRadius: '5px',
+        backgroundColor: '#4CAF50',
+        color: '#fff',
+        border: 'none',
+        cursor: 'pointer'
     }
 };
 

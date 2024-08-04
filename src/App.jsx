@@ -3,7 +3,7 @@ import PuzzleJigsaw from "./components/PuzzleJigsaw";
 export default function App() {
     return (
         <>
-            <h1 style={styles.header}>React Puzzle Game</h1>
+            <h1 style={styles.header}>Happy birthday</h1>
             <div style={styles.container2}>
                 <div style={styles.container}>
                     <PuzzleJigsaw />
