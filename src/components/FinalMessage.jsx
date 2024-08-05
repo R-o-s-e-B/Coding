@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-function LevelThree() {
+function FinalMessage() {
     useEffect(() => {
         const audio = new Audio('./assets/hbd.mp3');
         audio.play();
@@ -40,4 +40,4 @@ const styles = {
     }
 };
 
-export default LevelThree;
+export default FinalMessage;
