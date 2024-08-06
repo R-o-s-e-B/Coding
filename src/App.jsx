@@ -1,11 +1,12 @@
 import PuzzleJigsaw from "./components/PuzzleJigsaw";
+import bgImg from './assets/bg.png';
 
 export default function App() {
     return (
-        <>
+        <div style={styles.app}>
             <h1 style={styles.header}>Happy birthday</h1>
-                    <PuzzleJigsaw />
-        </>
+            <PuzzleJigsaw />
+        </div>
     );
 }
 
@@ -16,14 +17,14 @@ const styles = {
         fontSize: '32px',
         color: '#333'
     },
-    container: {
-        height:'50%',
-        width:'50%',
-        border: '2px solid black',
-    },
-    container2: {
+    app: {
+        backgroundImage: `url(${bgImg})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
         display: 'flex',
+        flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
+        zIndex: -1
     },
 };

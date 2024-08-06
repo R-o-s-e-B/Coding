@@ -85,6 +85,7 @@ const styles = {
         height: '50%',
         width: '50%',
         border: '2px solid black',
+        zIndex:2
     },
     container2: {
         display: 'flex',
