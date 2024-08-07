@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+import confetti from '../assets/confetti.png'
+import cake from '../assets/bi_cake.png'
 
 function FinalMessage() {
     useEffect(() => {
@@ -11,22 +13,31 @@ function FinalMessage() {
     }, []);
 
     return (
+        <>
+        <img src={confetti} style={{position:"absolute", zIndex:'4', left:"10%", top:"30%", height:"200px"}}/>
+        <img src={confetti} style={{position:"absolute", zIndex:'4', right:"10%", top:"30%", height:"200px", transform: 'scaleX(-1)'}}/>
+        <img src={cake} style={{position:"absolute", zIndex:'4', left:"34%", top:"60%", height:"100px"}}/>
+
         <div style={styles.container}>
-            <h2 style={styles.header}>Congratulations! You&apos;ve reached Level 3</h2>
-            <p style={styles.message}>Here is your special message: &quot;You are the most important person in my life.&quot;</p>
+        
+            <h2 className="josefin-slab-regular font-bold text-3xl mb-4">Congratulations!</h2>
+            <p className="josefin-slab-regular font-semibold text-xl mb-4">You&apos;ve reached Level 3</p>
+            <p className="josefin-slab-regular font-semibold text-xl mb-4">Here is your special message: </p>
+            <p style={styles.message} className="josefin-slab-regular font-black text-2xl mb-4">&quot;You are the most important person in my life.&quot;</p>
         </div>
+        </>
     );
 }
 
 const styles = {
     container: {
+        position: "absolute",
+        top:"28%",
         textAlign: 'center',
         padding: '20px',
-        backgroundColor: '#fff',
-        borderRadius: '10px',
-        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
         maxWidth: '400px',
-        margin: '20px auto'
+        margin: '20px auto',
+        zIndex: 4
     },
     header: {
         fontSize: '24px',
@@ -34,9 +45,7 @@ const styles = {
         color: '#333'
     },
     message: {
-        fontSize: '18px',
-        color: '#333',
-        marginTop: '20px'
+        fontWeight:"700"
     }
 };
 

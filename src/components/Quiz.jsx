@@ -39,7 +39,7 @@ function Quiz({ onLevelUp }) {
 
     return (
         <div style={styles.container}>
-            <h2 style={styles.header}>Most required thing to live</h2>
+            <h2 style={styles.header} className="josefin-slab-regular">Most required thing to live</h2>
             <ul style={styles.list}>
                 {options.map((option, index) => (
                     <li
@@ -47,9 +47,10 @@ function Quiz({ onLevelUp }) {
                         onClick={() => handleOptionClick(option)}
                         style={{
                             ...styles.option,
-                            backgroundColor: selectedOption === option ? (isCorrect ? '#4CAF50' : '#F44336') : '#f0f0f0',
+                            backgroundColor: selectedOption === option ? (isCorrect ? '#4CAF50' : '#F44336') : '#D5FAE1',
                             color: selectedOption === option ? '#fff' : '#000'
                         }}
+                        className="josefin-slab-regular"
                     >
                         {option}
                     </li>
@@ -62,7 +63,6 @@ function Quiz({ onLevelUp }) {
                         type="text"
                         value={enteredText}
                         onChange={handleTextChange}
-                        style={styles.input}
                         placeholder="Enter the correct answer"
                     />
                     <button onClick={handleTextSubmit} style={styles.button}>Submit</button>
@@ -78,13 +78,17 @@ Quiz.propTypes = {
 
 const styles = {
     container: {
+        position:"absolute",
+        top:"20%",
         textAlign: 'center',
         padding: '20px',
-        backgroundColor: '#fff',
+        backgroundColor: '#B1EFD9',
         borderRadius: '10px',
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-        maxWidth: '400px',
-        margin: '20px auto'
+        width: '500px',
+        height:'fit-content',
+        margin: '20px auto',
+        zIndex:2
     },
     header: {
         fontSize: '24px',
@@ -100,7 +104,8 @@ const styles = {
         margin: '10px 0',
         borderRadius: '5px',
         cursor: 'pointer',
-        transition: 'background-color 0.3s, color 0.3s'
+        //transition: 'background-color 0.3s, color 0.3s',
+        backgroundColor:"#D5FAE1;",
     },
     message: {
         fontSize: '18px',
@@ -110,13 +115,6 @@ const styles = {
     textBoxContainer: {
         marginTop: '20px',
         textAlign: 'center'
-    },
-    input: {
-        padding: '10px',
-        fontSize: '16px',
-        borderRadius: '5px',
-        border: '1px solid #ccc',
-        marginRight: '10px'
     },
     button: {
         padding: '10px 20px',

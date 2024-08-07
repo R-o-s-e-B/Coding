@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.reenie-beanie-regular {
+  font-family: "Reenie Beanie", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 64px;
+  color: #176B87;
+}
+
+.josefin-slab-regular {
+  font-family: "Josefin Slab", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  color: #176B87;
+}
+
+input {
+  padding: 7px 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+  background-color: #D5FAE1;
+}
+
+input:focus {
+  border-color: #3DD2CC;
+  outline: none; 
+}
